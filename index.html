@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Ismaël Zouré — Portfolio</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Manrope:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#050505;--panel:#0e0d0a;--fg:#f3ead2;--muted:#b3a888;--gold:#d4af37;--gold2:#f4d77a;--line:rgba(212,175,55,.3);color-scheme:dark;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+html{scroll-behavior:smooth;scroll-padding-top:calc(env(safe-area-inset-top,0px) + 70px)}
+*,*::before,*::after{box-sizing:inherit}
+body{margin:0;background:var(--bg);color:var(--fg);font:400 16px/1.65 Manrope,system-ui,sans-serif}
+h1,h2,h3{font-family:"Cormorant Garamond",Georgia,serif;font-weight:600;line-height:1.1;margin:0}
+a{color:var(--gold2)}
+:focus-visible{outline:2px solid var(--gold2);outline-offset:3px}
+header{position:sticky;top:env(safe-area-inset-top,0px);z-index:5;display:flex;align-items:center;justify-content:space-between;gap:16px;padding:12px max(20px,5vw);background:rgba(5,5,5,.82);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+.logo{font:700 24px "Cormorant Garamond",serif;color:var(--gold);text-decoration:none;letter-spacing:.04em}
+nav{display:flex;gap:22px;align-items:center}
+nav a{color:var(--fg);text-decoration:none;font-size:14px;opacity:.85}
+nav a:hover{color:var(--gold2);opacity:1}
+#lang{background:none;border:1px solid var(--gold);color:var(--gold2);padding:5px 13px;border-radius:99px;font:600 13px Manrope,sans-serif;cursor:pointer}
+#lang:hover{background:var(--gold);color:#000}
+@media(max-width:720px){nav a{display:none}}
+.hero{position:relative;min-height:88vh;display:grid;align-items:center;padding:60px max(20px,6vw);overflow:hidden}
+#net{position:absolute;inset:0;width:100%;height:100%}
+.hero>div{position:relative;max-width:760px}
+.hero h1{font-size:clamp(46px,9vw,104px);background:linear-gradient(95deg,#fff3c4,var(--gold) 55%,#9a7410);-webkit-background-clip:text;background-clip:text;color:transparent}
+.hero p{font-size:clamp(17px,2.2vw,22px);color:var(--muted);max-width:56ch;margin:20px 0 30px}
+.btn{display:inline-block;padding:12px 26px;border-radius:99px;text-decoration:none;font-weight:600;margin:0 10px 10px 0;border:1px solid var(--gold);transition:.2s}
+.btn.main{background:var(--gold);color:#000}
+.btn.main:hover{background:var(--gold2)}
+.btn.ghost{color:var(--gold2)}
+.btn.ghost:hover{background:rgba(212,175,55,.14)}
+section{padding:84px max(20px,6vw);max-width:1120px;margin:0 auto}
+h2{font-size:clamp(34px,5vw,54px);color:var(--gold2);margin-bottom:28px}
+.lead{max-width:62ch;color:var(--muted);font-size:17px}
+.about{display:grid;grid-template-columns:1.1fr 1fr;gap:48px;align-items:start}
+@media(max-width:820px){.about{grid-template-columns:1fr}}
+.chart{border-left:1px solid var(--line);padding-left:28px}
+.chart h3{font-size:24px;margin-bottom:6px}
+.chart small{color:var(--muted)}
+.bar{display:grid;grid-template-columns:34px 1fr 54px;gap:12px;align-items:center;margin:16px 0}
+.bar i{display:block;height:10px;border-radius:5px;background:linear-gradient(90deg,#8a6a10,var(--gold2));width:0;transition:width 1.4s cubic-bezier(.2,.7,.2,1)}
+.bar b{font-weight:600;color:var(--gold2);text-align:right}
+.chips{display:flex;flex-wrap:wrap;gap:10px;margin-bottom:30px}
+.chip{background:none;border:1px solid var(--line);color:var(--fg);padding:7px 18px;border-radius:99px;cursor:pointer;font:500 14px Manrope,sans-serif}
+.chip[aria-pressed=true]{background:var(--gold);color:#000;border-color:var(--gold)}
+.proj{border-top:1px solid var(--line);padding:28px 0;display:grid;grid-template-columns:230px 1fr;gap:12px 40px}
+.proj.hide{display:none}
+@media(max-width:720px){.proj{grid-template-columns:1fr}}
+.proj h3{font-size:30px;color:var(--fg)}
+.tag{display:inline-block;margin-top:8px;font-size:13px;color:var(--gold);border:1px solid var(--line);border-radius:6px;padding:1px 9px}
+.proj p{margin:0 0 10px;color:var(--muted)}
+.stack{font-size:14px;color:var(--fg)}
+.job{border-left:2px solid var(--gold);padding:2px 0 2px 24px;margin:0 0 34px;max-width:70ch}
+.job h3{font-size:28px}
+.job em{color:var(--gold);font-style:normal;font-size:14px}
+.job p{margin:8px 0 0;color:var(--muted)}
+.skills{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:34px}
+.skills h3{font-size:24px;color:var(--gold2);margin-bottom:10px}
+.skills ul{list-style:none;margin:0;padding:0}
+.skills li{padding:5px 0;border-bottom:1px solid rgba(212,175,55,.12);color:var(--muted)}
+.contact{text-align:center}
+.contact .lead{margin:0 auto 28px}
+footer{text-align:center;padding:30px 20px 44px;color:var(--muted);font-size:13px;border-top:1px solid var(--line)}
+#toast{position:fixed;left:50%;bottom:calc(24px + env(safe-area-inset-bottom,0px));transform:translateX(-50%) translateY(30px);background:var(--gold);color:#000;padding:10px 20px;border-radius:99px;font-weight:600;opacity:0;transition:.3s;pointer-events:none}
+#toast.on{opacity:1;transform:translateX(-50%)}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.bar i{transition:none}}
+</style>
+</head>
+<body>
+<header>
+<a class="logo" href="#top" aria-label="Ismaël Zouré">IZ</a>
+<nav>
+<a href="#about" data-fr="À propos" data-en="About">À propos</a>
+<a href="#projects" data-fr="Projets" data-en="Projects">Projets</a>
+<a href="#experience" data-fr="Expérience" data-en="Experience">Expérience</a>
+<a href="#skills" data-fr="Compétences" data-en="Skills">Compétences</a>
+<a href="#contact">Contact</a>
+<button id="lang" aria-label="Changer de langue / Switch language">EN</button>
+</nav>
+</header>
+<main id="top">
+<div class="hero">
+<canvas id="net" aria-hidden="true"></canvas>
+<div>
+<h1>Ismaël Zouré</h1>
+<p data-fr="Étudiant en informatique à Ouagadougou. Je conçois des réseaux et des applications, et je veux comprendre pourquoi un système fonctionne avant de le construire." data-en="Computer science student in Ouagadougou. I design networks and applications, and I want to understand why a system works before I build it.">Étudiant en informatique à Ouagadougou. Je conçois des réseaux et des applications, et je veux comprendre pourquoi un système fonctionne avant de le construire.</p>
+<a class="btn main" href="#projects" data-fr="Voir mes projets" data-en="See my projects">Voir mes projets</a>
+<a class="btn ghost" href="#contact" data-fr="Me contacter" data-en="Contact me">Me contacter</a>
+</div>
+</div>
+
+<section id="about">
+<h2 data-fr="À propos" data-en="About">À propos</h2>
+<div class="about">
+<div>
+<p class="lead" data-fr="Je termine ma Licence en Informatique à l’Université Privée de Gampéla (UPG). J’ai d’abord suivi un tronc commun en Mathématiques, Physique, Chimie et Informatique (MPCI), puis je me suis spécialisé en Réseaux Informatiques et Génie Logiciel." data-en="I am finishing my Bachelor’s degree in Computer Science at the Université Privée de Gampéla (UPG). I first followed a common core in Mathematics, Physics, Chemistry and Computer Science (MPCI), then specialised in Computer Networks and Software Engineering.">Je termine ma Licence en Informatique à l’Université Privée de Gampéla (UPG). J’ai d’abord suivi un tronc commun en Mathématiques, Physique, Chimie et Informatique (MPCI), puis je me suis spécialisé en Réseaux Informatiques et Génie Logiciel.</p>
+<p class="lead" data-fr="Deux domaines m’attirent : l’architecture des réseaux et la sécurité des systèmes d’information. Langues : français (langue maternelle), anglais (B1)." data-en="Two fields draw me in: network architecture and information systems security. Languages: French (native), English (B1).">Deux domaines m’attirent : l’architecture des réseaux et la sécurité des systèmes d’information. Langues : français (langue maternelle), anglais (B1).</p>
+</div>
+<div class="chart" id="chart">
+<h3 data-fr="Progression par semestre" data-en="Progress by semester">Progression par semestre</h3>
+<small data-fr="Moyennes sur 20 · Major de promotion aux semestres 3 et 4" data-en="Averages out of 20 · Top of the class in semesters 3 and 4">Moyennes sur 20 · Major de promotion aux semestres 3 et 4</small>
+<div class="bar"><span>S1</span><span><i data-w="11.10"></i></span><b>11,10</b></div>
+<div class="bar"><span>S2</span><span><i data-w="11.55"></i></span><b>11,55</b></div>
+<div class="bar"><span>S3</span><span><i data-w="15.45"></i></span><b>15,45</b></div>
+<div class="bar"><span>S4</span><span><i data-w="16.13"></i></span><b>16,13</b></div>
+</div>
+</div>
+</section>
+
+<section id="projects">
+<h2 data-fr="Projets" data-en="Projects">Projets</h2>
+<div class="chips" role="group" aria-label="Filtres">
+<button class="chip" aria-pressed="true" data-f="all" data-fr="Tous" data-en="All">Tous</button>
+<button class="chip" aria-pressed="false" data-f="net" data-fr="Réseaux" data-en="Networks">Réseaux</button>
+<button class="chip" aria-pressed="false" data-f="dev" data-fr="Développement" data-en="Development">Développement</button>
+<button class="chip" aria-pressed="false" data-f="design" data-fr="Conception" data-en="Design">Conception</button>
+</div>
+<article class="proj" data-t="net">
+<div><h3>Cisco Packet Tracer</h3><span class="tag" data-fr="Projet académique" data-en="Academic project">Projet académique</span></div>
+<div><p data-fr="Réseau d’entreprise complet : VLAN, routage inter-VLAN, DHCP, DNS et serveur web, avec rapport et support de présentation." data-en="Complete enterprise network: VLANs, inter-VLAN routing, DHCP, DNS and a web server, with a report and presentation.">Réseau d’entreprise complet : VLAN, routage inter-VLAN, DHCP, DNS et serveur web, avec rapport et support de présentation.</p><div class="stack"><a href="https://github.com/IsmaelZoure604/reseau-cisco-packet-tracer" target="_blank" rel="noopener">GitHub</a></div></div>
+</article>
+<article class="proj" data-t="dev">
+<div><h3 data-fr="Sites web universitaires" data-en="University websites">Sites web universitaires</h3><span class="tag" data-fr="Projet académique" data-en="Academic project">Projet académique</span></div>
+<div><p data-fr="Deux sites complets : HTML/CSS pur, puis reconstruction avec Bootstrap 5, avec mode sombre, support multilingue et panier compatible mobile money." data-en="Two complete sites: plain HTML/CSS, then rebuilt with Bootstrap 5, with dark mode, multilingual support and a mobile-money-compatible cart.">Deux sites complets : HTML/CSS pur, puis reconstruction avec Bootstrap 5, avec mode sombre, support multilingue et panier compatible mobile money.</p><div class="stack">HTML · CSS · JavaScript · Bootstrap 5 — <a href="https://github.com/IsmaelZoure604/site-web-universitaire" target="_blank" rel="noopener">GitHub</a></div></div>
+</article>
+<article class="proj" data-t="dev">
+<div><h3 data-fr="Producteurs de céréales" data-en="Cereal producers">Producteurs de céréales</h3><span class="tag" data-fr="Projet académique" data-en="Academic project">Projet académique</span></div>
+<div><p data-fr="Application en langage C qui gère des producteurs de céréales avec des listes chaînées." data-en="A C application that manages cereal producers using linked lists.">Application en langage C qui gère des producteurs de céréales avec des listes chaînées.</p><div class="stack">C</div></div>
+</article>
+<article class="proj" data-t="design">
+<div><h3>VeraDoc</h3><span class="tag" data-fr="Projet personnel · conception" data-en="Personal project · design phase">Projet personnel · conception</span></div>
+<div><p data-fr="Plateforme web et mobile de légalisation internationale de documents. L’architecture fonctionnelle est posée, avec une sécurité à cinq couches : OCR, reconnaissance d’image, hachage SHA-256, QR code et OTP, filigrane numérique. Le développement n’a pas encore commencé." data-en="Web and mobile platform for international document legalisation. The functional architecture is defined, with five security layers: OCR, image recognition, SHA-256 hashing, QR code and OTP, digital watermark. Development has not started yet.">Plateforme web et mobile de légalisation internationale de documents. L’architecture fonctionnelle est posée, avec une sécurité à cinq couches : OCR, reconnaissance d’image, hachage SHA-256, QR code et OTP, filigrane numérique. Le développement n’a pas encore commencé.</p><div class="stack">Flutter/Dart · React.js · Node.js · PostgreSQL · AWS S3 · Python/TensorFlow</div></div>
+</article>
+</section>
+
+<section id="experience">
+<h2 data-fr="Expérience" data-en="Experience">Expérience</h2>
+<div class="job"><h3>Neris Technologies SARL</h3><em data-fr="Stagiaire développement logiciel · Ouagadougou" data-en="Software development intern · Ouagadougou">Stagiaire développement logiciel · Ouagadougou</em><p data-fr="Développement complet d’une application de gestion de dépenses avec portefeuille virtuel, sous Flutter et Firebase : règles de sécurité Firestore, transactions groupées, génération de PDF et habillage aux couleurs de l’entreprise." data-en="End-to-end development of an expense management app with a virtual wallet, using Flutter and Firebase: Firestore security rules, batched transactions, PDF generation and company branding.">Développement complet d’une application de gestion de dépenses avec portefeuille virtuel, sous Flutter et Firebase : règles de sécurité Firestore, transactions groupées, génération de PDF et habillage aux couleurs de l’entreprise.</p></div>
+<div class="job"><h3>SkyNet Telecom</h3><em data-fr="Stagiaire en réseaux informatiques · Ouagadougou" data-en="Computer networks intern · Ouagadougou">Stagiaire en réseaux informatiques · Ouagadougou</em><p data-fr="Observation et participation à la gestion d’une infrastructure réseau réelle, avec ses contraintes de fiabilité et de maintenance." data-en="Observed and took part in managing a real network infrastructure, with its reliability and maintenance constraints.">Observation et participation à la gestion d’une infrastructure réseau réelle, avec ses contraintes de fiabilité et de maintenance.</p></div>
+</section>
+
+<section id="skills">
+<h2 data-fr="Compétences" data-en="Skills">Compétences</h2>
+<div class="skills">
+<div><h3 data-fr="Langages" data-en="Languages">Langages</h3><ul><li>C, C++</li><li>Python</li><li>JavaScript</li><li>HTML / CSS</li><li>Dart</li></ul></div>
+<div><h3 data-fr="Outils et frameworks" data-en="Tools and frameworks">Outils et frameworks</h3><ul><li>Flutter</li><li>Firebase</li><li>React.js, Node.js</li><li>Bootstrap 5</li></ul></div>
+<div><h3 data-fr="Réseaux" data-en="Networks">Réseaux</h3><ul><li data-fr="Adressage IP et sous-réseaux" data-en="IP addressing and subnetting">Adressage IP et sous-réseaux</li><li data-fr="VLAN et routage inter-VLAN" data-en="VLANs and inter-VLAN routing">VLAN et routage inter-VLAN</li><li>DHCP / DNS</li><li>Cisco Packet Tracer</li></ul></div>
+<div><h3 data-fr="Données et cloud" data-en="Data and cloud">Données et cloud</h3><ul><li>PostgreSQL</li><li>Firestore</li><li>AWS S3</li></ul></div>
+</div>
+</section>
+
+<section id="contact" class="contact">
+<h2 data-fr="Parlons-en" data-en="Let’s talk">Parlons-en</h2>
+<p class="lead" data-fr="Une question sur mon parcours ou mes projets ? Écrivez-moi." data-en="A question about my background or projects? Write to me.">Une question sur mon parcours ou mes projets ? Écrivez-moi.</p>
+<a class="btn main" href="mailto:zoureismael82@gmail.com">zoureismael82@gmail.com</a>
+<button class="btn ghost" id="copy" style="background:none;cursor:pointer;font:600 16px Manrope,sans-serif" data-fr="Copier le courriel" data-en="Copy email">Copier le courriel</button>
+<a class="btn ghost" href="https://github.com/IsmaelZoure604" target="_blank" rel="noopener">GitHub</a>
+</section>
+</main>
+<footer>© 2026 Ismaël Zouré · Ouagadougou, Burkina Faso</footer>
+<div id="toast" role="status"></div>
+<script>
+(function(){
+var lang='fr',T={fr:'Courriel copié',en:'Email copied'};
+try{var s=localStorage.getItem('lang');if(s==='en'||s==='fr')lang=s}catch(e){}
+function apply(){
+document.documentElement.lang=lang;
+document.querySelectorAll('[data-fr]').forEach(function(e){e.textContent=e.getAttribute('data-'+lang)});
+document.getElementById('lang').textContent=lang==='fr'?'EN':'FR';
+try{localStorage.setItem('lang',lang)}catch(e){}
+}
+document.getElementById('lang').onclick=function(){lang=lang==='fr'?'en':'fr';apply()};
+apply();
+document.querySelectorAll('.chip').forEach(function(c){c.onclick=function(){
+document.querySelectorAll('.chip').forEach(function(x){x.setAttribute('aria-pressed',x===c)});
+var f=c.getAttribute('data-f');
+document.querySelectorAll('.proj').forEach(function(p){p.classList.toggle('hide',f!=='all'&&p.getAttribute('data-t')!==f)});
+}});
+function toast(m){var t=document.getElementById('toast');t.textContent=m;t.classList.add('on');setTimeout(function(){t.classList.remove('on')},1800)}
+document.getElementById('copy').onclick=function(){
+var m='zoureismael82@gmail.com';
+if(navigator.clipboard){navigator.clipboard.writeText(m).then(function(){toast(T[lang])},function(){toast(m)})}else{toast(m)}
+};
+var bars=document.querySelectorAll('.bar i');
+function fill(){bars.forEach(function(i){i.style.width=(parseFloat(i.getAttribute('data-w'))/20*100)+'%'})}
+if('IntersectionObserver' in window){var io=new IntersectionObserver(function(en){if(en[0].isIntersecting){fill();io.disconnect()}},{threshold:.35});io.observe(document.getElementById('chart'))}else fill();
+var cv=document.getElementById('net'),cx=cv.getContext('2d'),N=[],W,H,mx=-999,my=-999,still=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+function size(){var r=cv.getBoundingClientRect(),d=window.devicePixelRatio||1;W=r.width;H=r.height;cv.width=W*d;cv.height=H*d;cx.setTransform(d,0,0,d,0,0);N=[];var n=Math.round(W*H/16000);for(var k=0;k<n;k++)N.push({x:Math.random()*W,y:Math.random()*H,vx:(Math.random()-.5)*.35,vy:(Math.random()-.5)*.35,r:Math.random()*1.6+1})}
+function draw(){
+cx.clearRect(0,0,W,H);
+for(var i=0;i<N.length;i++){var a=N[i];
+if(!still){a.x+=a.vx;a.y+=a.vy;if(a.x<0||a.x>W)a.vx*=-1;if(a.y<0||a.y>H)a.vy*=-1}
+var dm=Math.hypot(a.x-mx,a.y-my),hot=dm<150;
+for(var j=i+1;j<N.length;j++){var b=N[j],d=Math.hypot(a.x-b.x,a.y-b.y);
+if(d<130){cx.strokeStyle='rgba(212,175,55,'+((1-d/130)*(hot?.7:.28))+')';cx.lineWidth=.8;cx.beginPath();cx.moveTo(a.x,a.y);cx.lineTo(b.x,b.y);cx.stroke()}}
+cx.fillStyle=hot?'#f4d77a':'rgba(212,175,55,.75)';cx.beginPath();cx.arc(a.x,a.y,hot?a.r+1.2:a.r,0,6.283);cx.fill()}
+if(!still)requestAnimationFrame(draw)}
+size();draw();
+window.addEventListener('resize',function(){size();if(still)draw()});
+cv.parentNode.addEventListener('pointermove',function(e){var r=cv.getBoundingClientRect();mx=e.clientX-r.left;my=e.clientY-r.top;if(still)draw()});
+})();
+</script>
+</body>
+</html>
